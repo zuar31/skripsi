@@ -102,7 +102,7 @@ margin-top: -28px;
 <script type="text/javascript">
 //    console.log('cccp');
     $(document).ready(function(){
-       console.log('cccp');
+       console.log('hahaha');
 //       $('#test').click(function(){
 //           alert('cccp');
 //       })
