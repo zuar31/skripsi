@@ -1,5 +1,14 @@
+<?php
+include_once '../config/database.php';
+include_once '../controller/UserController.php';
+$database=new Database();
+// $database=new mysqli("localhost","root","root","test_ilham");
+$db=$database->getConnection();
+$user=new User($db);
+$query=$user->read();
+// var_dump($query['num_rows']);
+?>
 <div class="page">
-
   <div class="page-header">
     <h1 class="page-title">Users</h1>
     <div class="page-header-actions">
@@ -32,29 +41,24 @@
             <tr>
               <th>Name</th>
               <th>Username </th>
-              <th>Email</th>
+              <th>Alamat</th>
               <th>Password</th>
-              <th>Roles</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Michael Brynn</td>
-              <td>brynn</td>
-              <td>m.brynn@gmail.com</td>
-              <td>12345678</td>
-              <td>superadministrator</td>
-              <td>Edit - Delete</td>
+            <?php if($query['num_rows'] > 0){
+              while ($row=$query['query']->fetch_assoc()){
+              ?>
+              <tr>
+            <td><?php echo $row['nama'] ?></td>
+             <td><?php echo $row['username'] ?></td>
+              <td><?php echo $row['alamat'] ?></td>
+               <td><?php echo $row['password'] ?></td>
+                <td>Edit - Delete</td>
+            
             </tr>
-            <tr>
-              <td>Kaori Saotome</td>
-              <td>saotome</td>
-              <td>k.saotome@softbank.jp</td>
-              <td>12345678</td>
-              <td>superadministrator</td>
-              <td>Edit - Delete</td>
-            </tr>
+          <?php }} ?>
           </tbody>
         </table>
       </div>
