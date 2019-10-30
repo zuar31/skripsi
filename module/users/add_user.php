@@ -1,7 +1,7 @@
 <script src="../Admin Remark/topbar/assets/vendor/jquery/jquery.js"></script>
 <?php 
 
-include_once '../config/database.php';
+include_once '../dbase/db.php';
 include_once '../controller/UserController.php';
 $database=new Database();
 // $database=new mysqli("localhost","root","root","test_ilham");
@@ -74,6 +74,7 @@ if($_POST)
 			<div class="panel">
 				<div class="panel-body">
 					<form class="col-md-5" action="" method="POST">
+						<input type="text" id="mode" value="<?php echo $_GET['mode']?>">
 						<div class="row">
 							<div class="form-group col-md-12">
 								<input type="text" class="form-control" name="nama" placeholder="Name"

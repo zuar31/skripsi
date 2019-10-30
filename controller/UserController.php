@@ -24,7 +24,7 @@ class User{
 		// var_dump($nama);
 		$username=$form['username'];
 		$alamat=$form['alamat'];
-		$password=$form['password'];
+		$password=password_hash($form['password'], PASSWORD_BCRYPT);
 		 // var_dump($password);
 		$insert=$database->query("INSERT into users (id,nama,username,alamat,password) VALUES ('','$nama','$username','$alamat','$password')");
 		// var_dump($insert);
