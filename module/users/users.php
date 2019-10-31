@@ -53,7 +53,7 @@ $query=$user->read();
                   <td><?php echo $row['nama'] ?></td>
                   <td><?php echo $row['username'] ?></td>
                   <td><?php echo $row['alamat'] ?></td>
-                  <td>Edit - Delete</td>
+                  <td><a class="btn btn-sm btn-primary" href='topbar.php?p=add_user&f=users&mode=edit&id=<?php echo $row['id']?>'><i class="icon glyphicon glyphicon-edit" aria-hidden="true"></i> Edit</a> &nbsp&nbsp <a class="btn btn-sm btn-danger" href=''><i class="icon glyphicon glyphicon-trash" aria-hidden="true"></i> Delete</a></td>
                 </tr>
               <?php }} ?>
             </tbody>

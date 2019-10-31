@@ -42,6 +42,7 @@
 
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="../Admin Remark/topbar/assets/fonts/glyphicons/glyphicons.css">
         <link rel="stylesheet" href="../Admin Remark/topbar/assets/fonts/web-icons/web-icons.min.css">
         <link rel="stylesheet" href="../Admin Remark/topbar/assets/fonts/brand-icons/brand-icons.min.css">
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
