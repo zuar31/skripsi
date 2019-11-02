@@ -1,4 +1,13 @@
+<script src="../Admin Remark/topbar/assets/vendor/jquery/jquery.js"></script>
+<?php 
+include_once '../config/database_snort.php';
+include_once '../controller/MonitorIDSController.php';
+// $database=new DatabaseSnort();
+// $db=$database->getConnection();
 
+// $snort=new MonitorIDS($db);
+// $query=$snort->read();
+?>
 
 <style>
   #tabel.dataTables_filter {
@@ -37,20 +46,20 @@
             <td>:</td>
             <td> 
               <div class="col-sm-4">
-              <div class="input-daterange" data-plugin="datepicker">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="icon wb-calendar" aria-hidden="true"></i>
-                        </span>
-                        <input type="text" class="form-control" name="start" />
-                      </div>
-                      <div class="input-group">
-                        <span class="input-group-addon">to</span>
-                        <input type="text" class="form-control" name="end" />
-                      </div>
-                    </div>
+                <div class="input-daterange" data-plugin="datepicker">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="icon wb-calendar" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" class="form-control" name="start" />
                   </div>
-                  </td>
+                  <div class="input-group">
+                    <span class="input-group-addon">to</span>
+                    <input type="text" class="form-control" name="end" />
+                  </div>
+                </div>
+              </div>
+            </td>
           </tr>
         </table>
       </header>
@@ -72,42 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>84</td>
-              <td>1</td>
-              <td>18</td>
-              <td>udp flood attack detected</td>
-              <td>17</td>
-              <td>3232235877</td>
-              <td>3232235878</td>
-              <td>60928</td>
-              <td>80</td>
-              <td>2019-09-22 16:39:42</td>
-            </tr>
-            <tr>
-              <td>84</td>
-              <td>1</td>
-              <td>18</td>
-              <td>udp flood attack detected</td>
-              <td>17</td>
-              <td>3232235877</td>
-              <td>3232235878</td>
-              <td>60928</td>
-              <td>80</td>
-              <td>2019-09-22 16:39:42</td>
-            </tr>
-            <tr>
-              <td>84</td>
-              <td>1</td>
-              <td>18</td>
-              <td>udp flood attack detected</td>
-              <td>17</td>
-              <td>3232235877</td>
-              <td>3232235878</td>
-              <td>60928</td>
-              <td>80</td>
-              <td>2019-09-22 16:39:42</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -126,6 +100,9 @@
 // //       })
 $('#tabel').DataTable({
  bFilter:true,
+ bProcessing: true,
+ bServerSide: true,
+ sAjaxSource: "../datatables_serverside/monitor_ids_datatables.php",
  dom:
  "<'row'<'col-sm-1'l><'col-sm-2'f>>" +
  "<'row'<'col-sm-12'tr>>" +
