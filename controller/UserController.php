@@ -79,55 +79,78 @@ class User{
 
 	function update()
 	{
+		// var_dump('aaa');
 		$database=$this->conn;
 		$form=$_POST;
 		$id=$form['id'];	
 		$query=$database->query("SELECT password FROM users WHERE id='$id'");
 		$pass_ver=$query->fetch_assoc();
 		// var_dump(password_verify($form['password'],$pass_ver['password']));
-		if(password_verify($form['password'],$pass_ver['password']))
+		if(empty($form['password']))
 		{
-			$nama=$form['nama'];		
-			$username=$form['username'];
-			$alamat=$form['alamat'];
-			$password=password_hash($form['password_baru'], PASSWORD_BCRYPT);
-			if(!empty($password))
+			$data['status']=false;
+			$data['msg']='Silahkan Masukkan Password Terlebih Dahulu';
+			$data['type']='alert-danger';
+			return $data;
+		}
+		else
+		{
+			if(password_verify($form['password'],$pass_ver['password']))
 			{
-				$update=$database->query('UPDATE users set nama="$nama",username="$username",alamat="$alamat",password="$password" WHERE id="$id"');
-			}
-			else
-			{
-				$update=$database->query('UPDATE users set nama="$nama",username="$username",alamat="$alamat" WHERE id="$id"');
-			}
-			// var_dump('aaaa');
+				$nama=$form['nama'];		
+				$username=$form['username'];
+				$alamat=$form['alamat'];
+				$password_baru=password_hash($form['password_baru'], PASSWORD_BCRYPT);
+				if(!empty($password_baru))
+				{
+				// var_dump('aaaa');
+					$update=$database->query("UPDATE users set nama='$nama',username='$username',alamat='$alamat',password='$password_baru' WHERE id='$id'");
+				}
+				else
+				{
+				// var_dump('bbbb');
+					$update=$database->query("UPDATE users set nama='$nama',username='$username',alamat='$alamat' WHERE id='$id'");
+				}
 
-			if($update==true)
-			{
-				$data['status']=true;
-				$data['msg']='Data Berhasil Dimasukkan';
-				$data['type']='alert-success';
-				return $data;
+
+				if($update==true)
+				{
+					$data['status']=true;
+					$data['msg']='Data Berhasil Dihapus';
+					$data['type']='alert-success';
+					return $data;
+				}
+				else
+				{
+					$data['status']=false;
+					$data['msg']='Data Gagal Dihapus';
+					$data['type']='alert-danger';
+					return $data;
+				}
 			}
 			else
 			{
 				$data['status']=false;
-				$data['msg']='Data Gagal Dimasukkan';
+				$data['msg']='Password Yang Anda Masukkan Salah';
 				$data['type']='alert-danger';
 				return $data;
 			}
 		}
-		else
-		{
-			$data['status']=false;
-			$data['msg']='Password Yang Anda Masukkan Salah';
-			$data['type']='alert-danger';
-			return $data;
-		}
-		
-		
-		
-		
+	}
 
+	function delete($id)
+	{
+		$database=$this->conn;
+		// var_dump($id);
+		$query=$database->query("DELETE FROM users WHERE id='$id'");
+		// var_dump($query);
+		if($query==true)
+				{
+					$data['status']=true;
+					$data['msg']='Data Berhasil Dimasukkan';
+					$data['type']='alert-success';
+					return $data;
+				}
 	}
 }
 ?>

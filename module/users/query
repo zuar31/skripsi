@@ -1,0 +1,1 @@
+SELECT sig_name as sig, count(sid) as jumlahalert, count(DISTINCT(ip_src)) as ip_src,count(DISTINCT(ip_dst)) as ip_dst,MIN(timestamp) as first,MAX(timestamp) as last FROM `acid_event` group by sig_name
