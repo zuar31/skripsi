@@ -38,7 +38,7 @@ $query=$snort->read();
           </header>
           <br/>
           <div class="panel-body">
-            <table class="table table-hover dataTable table-bordered	 w-full" id="tabel">
+            <table class="table table-hover dataTable table-bordered w-full" id="tabel">
               <thead>
                 <tr>
                   <th>Signature Name</th>
@@ -50,16 +50,19 @@ $query=$snort->read();
                 </tr>
               </thead>
               <tbody>
+              	<?php $jumlah=$db->query("SELECT count(sid) as jumlah FROM acid_event ")->fetch_assoc()
+              	// var_dump($jumlah);
+              	 ?>
                 <?php if($query['num_rows'] > 0){
                   while ($row=$query['query']->fetch_assoc()){
                     ?>
                     <tr>
                       <td><?php echo $row['sig'] ?></td>
-                      <td><?php echo $row['jumlahalert'] ?></td>
+                      <td><?php echo $row['jumlahalert'] ?> &nbsp(<?php echo round(($row['jumlahalert']/$jumlah['jumlah'])*100,2)?> %)</td>
                       <td><?php echo $row['ip_src'] ?></td>
                       <td><?php echo $row['ip_dst'] ?></td>
-                      <td><?php echo $row['first'] ?></td>
-                      <td><?php echo $row['last'] ?></td>
+                      <td><?php echo date('d-m-Y H:i:s',strtotime($row['first'])) ?></td>
+                      <td><?php echo date('d-m-Y H:i:s',strtotime($row['last'])) ?></td>
                     </tr>
                   <?php }} ?>
                 </tbody>

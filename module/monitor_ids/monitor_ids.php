@@ -40,12 +40,12 @@ include_once '../controller/MonitorIDSController.php';
         <div class="panel-actions"></div>
         <!-- <h3 class="panel-title">Basic</h3> -->
         <br>
-        <table style="margin-left:3em" width="100%">
+     <!--    <table style="margin-left:3em" width="100%">
           <tr>
             <td width="10%">Tanggal</td>
             <td>:</td>
-            <td> 
-              <div class="col-sm-4">
+            <td>  -->
+              <!-- <div class="col-sm-4">
                 <div class="input-daterange" data-plugin="datepicker">
                   <div class="input-group">
                     <span class="input-group-addon">
@@ -58,10 +58,10 @@ include_once '../controller/MonitorIDSController.php';
                     <input type="text" class="form-control" name="end" />
                   </div>
                 </div>
-              </div>
-            </td>
+              </div> -->
+        <!--     </td>
           </tr>
-        </table>
+        </table> -->
       </header>
       <br/>
       <div class="panel-body">
@@ -81,7 +81,7 @@ include_once '../controller/MonitorIDSController.php';
             </tr>
           </thead>
           <tbody>
-            
+
           </tbody>
         </table>
       </div>

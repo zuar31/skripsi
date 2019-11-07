@@ -132,7 +132,7 @@ include '../config/database_snort.php';
 		SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aColumns))."
 		FROM   $sTable
 		$sWhere
-		$sOrder
+		ORDER BY CID DESC
 		$sLimit
 	";
 	// $rResult = mysql_query( $sQuery, $gaSql['link'] ) or die(mysql_error());
@@ -177,21 +177,22 @@ include '../config/database_snort.php';
 		$row = array();
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
 		{
-			// if ( $aColumns[$i] == "version" )
-			// {
-			// 	 Special output formatting for 'version' column 
-			// 	$row[] = ($aRow[ $aColumns[$i] ]=="0") ? '-' : $aRow[ $aColumns[$i] ];
-			// }
-			// else 
-				if ( $aColumns[$i] != ' ' )
+			
+			if ( $aColumns[$i] == "timestamp" )
+			{
+				 // Special output formatting for 'version' column 
+				$row[] =  date('d-m-Y H:i:s',strtotime($aRow[ $aColumns[$i] ]));
+			}
+		
+			else if ( $aColumns[$i] != ' ' )
 			{
 				/* General output */
 				$row[] = $aRow[ $aColumns[$i] ];
 			}
-			else if($aColumns[$i]=='timestamp')
-			{
-				$row[] = $aRow[ date('d-m-Y H:i:s',strtotime($aColumns[$i])) ];
-			}
+			// else if($aColumns[$i]=='timestamp')
+			// {
+			// 	$row[] = $aRow[ date('d-m-Y H:i:s',strtotime($aColumns[$i])) ];
+			// }
 		}
 		$output['aaData'][] = $row;
 	}
