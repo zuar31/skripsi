@@ -5,7 +5,7 @@ class DatabaseSnort{
 	private $host="localhost";
 	private $db_name="snort";
 	private $username="root";
-	private $password="root";
+	private $password="1";
 	public $conn;
 
 	public function getConnection()

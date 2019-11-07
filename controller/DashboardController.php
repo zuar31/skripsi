@@ -10,6 +10,7 @@ class Dashboard{
 	public $username;
 	public $alamat;
 	public $password;
+        
 
 	public function __construct($db)
 	{
@@ -18,6 +19,7 @@ class Dashboard{
 
 	function read()
 	{
+            date_default_timezone_set('Asia/Jakarta');
 		$database=$this->conn;
 		$query=$database->query("SELECT sig_name as sig, count(sid) as jumlahalert, sum(sid) as jumlah,count(DISTINCT(ip_src)) as ip_src,count(DISTINCT(ip_dst)) as ip_dst,MIN(timestamp) as first,MAX(timestamp) as last FROM `acid_event` group by sig_name");
 		// var_dump($query);

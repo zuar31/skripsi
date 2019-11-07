@@ -1,7 +1,7 @@
 <?php
 $localhost = "localhost"; 
 $username = "root"; 
-$password = "root"; 
+$password = "1"; 
 $dbname = "snort"; 
  
 // create connection 

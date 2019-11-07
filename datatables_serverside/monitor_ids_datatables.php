@@ -1,5 +1,6 @@
 <?php
 include '../config/database_snort.php';
+date_default_timezone_set('Asia/Jakarta');
 	/*
 	 * Script:    DataTables server-side script for PHP and MySQL
 	 * Copyright: 2010 - Allan Jardine
@@ -177,7 +178,7 @@ include '../config/database_snort.php';
 		$row = array();
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
 		{
-			
+//			
 			if ( $aColumns[$i] == "timestamp" )
 			{
 				 // Special output formatting for 'version' column 

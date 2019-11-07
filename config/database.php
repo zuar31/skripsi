@@ -3,9 +3,9 @@
 class Database{
 
 	private $host="localhost";
-	private $db_name="test_ilham";
+	private $db_name="spk";
 	private $username="root";
-	private $password="root";
+	private $password="1";
 	public $conn;
 
 	public function getConnection()
