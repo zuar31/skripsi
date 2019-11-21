@@ -171,7 +171,7 @@
             </a>
           </li>
           <li class="dropdown site-menu-item">
-            <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
+            <a data-toggle="dropdown" href="topbar.php?p=clustering_kmeans&f=clustering_kmeans" data-dropdown-toggle="false">
               <i class="site-menu-icon wb-file" aria-hidden="true"></i>
               <span class="site-menu-title">Clustering K-Means</span>
             </a>
