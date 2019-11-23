@@ -47,6 +47,7 @@ $query=$snort->read();
                   <th>IP Destination</th>
                   <th>First Time</th>
                   <th>End Time</th>
+                  <th>Durasi (s)</th>
                 </tr>
               </thead>
               <tbody>
@@ -59,10 +60,16 @@ $query=$snort->read();
                     <tr>
                       <td><?php echo $row['sig'] ?></td>
                       <td><?php echo $row['jumlahalert'] ?> &nbsp(<?php echo round(($row['jumlahalert']/$jumlah['jumlah'])*100,2)?> %)</td>
-                      <td><?php echo $row['ip_src'] ?></td>
-                      <td><?php echo $row['ip_dst'] ?></td>
+                      <td><?php echo long2ip($row['ip_source']) ?></td>
+                      <td><?php echo long2ip($row['ip_destination']) ?></td>
                       <td><?php echo date('d-m-Y H:i:s',strtotime($row['first'])) ?></td>
                       <td><?php echo date('d-m-Y H:i:s',strtotime($row['last'])) ?></td>
+                      <td><?php $date=new DateTime($row['first']);
+                      $date2=new DateTime($row['last']);
+                      $diff=$date2->getTimestamp() - $date->getTimestamp();
+                      echo $diff;
+                      ?>
+                      </td>
                     </tr>
                   <?php }} ?>
                 </tbody>

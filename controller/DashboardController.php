@@ -21,7 +21,7 @@ class Dashboard{
 	{
             date_default_timezone_set('Asia/Jakarta');
 		$database=$this->conn;
-		$query=$database->query("SELECT sig_name as sig, count(sid) as jumlahalert, sum(sid) as jumlah,count(DISTINCT(ip_src)) as ip_src,count(DISTINCT(ip_dst)) as ip_dst,MIN(timestamp) as first,MAX(timestamp) as last FROM `acid_event` group by sig_name");
+		$query=$database->query("SELECT sig_name as sig, count(sid) as jumlahalert, sum(sid) as jumlah,ip_src AS ip_source,ip_dst as ip_destination,MIN(timestamp) as first,MAX(timestamp) as last FROM `acid_event` group by sig_name,ip_src,ip_dst");
 		// var_dump($query);
 		if($query==true)
 		{

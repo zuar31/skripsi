@@ -5,7 +5,7 @@ class Database{
 	private $host="localhost";
 	private $db_name="spk";
 	private $username="root";
-	private $password="1";
+	private $password="root";
 	public $conn;
 
 	public function getConnection()

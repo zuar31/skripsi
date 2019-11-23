@@ -47,12 +47,19 @@ $k = 3;
 $jumlah = $db->query("SELECT sig_name AS sig,"
         . " COUNT( sid ) AS jumlahalert,"
         . " COUNT( DISTINCT ( ip_src) ) AS ip_src,"
+        . " ip_src AS ip_source,"
         . " COUNT( DISTINCT (ip_dst) ) AS ip_dst,"
+        . " ip_dst AS ip_destination,"
         . " MIN( TIMESTAMP ) AS first ,"
         . " MAX( TIMESTAMP ) AS last "
         . " FROM acid_event "
         . " GROUP BY ip_src,ip_dst,sig_name");
 // var_dump($jumlah);
+
+foreach($jumlah as $jum)
+{
+    var_dump($jum);
+}
 
 
     $no = 1;
@@ -438,7 +445,7 @@ print_r($cluster_s[1]);
 
 $localhost = "localhost";
 $username = "root";
-$password = "1";
+$password = "root";
 $dbname = "snort";
 
 // create connection 

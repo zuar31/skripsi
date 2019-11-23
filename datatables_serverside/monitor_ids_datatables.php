@@ -184,6 +184,16 @@ date_default_timezone_set('Asia/Jakarta');
 				 // Special output formatting for 'version' column 
 				$row[] =  date('d-m-Y H:i:s',strtotime($aRow[ $aColumns[$i] ]));
 			}
+
+			else if($aColumns[$i]=="ip_src")
+			{
+				$row[] =  long2ip($aRow[ $aColumns[$i] ]);
+			}
+
+			else if($aColumns[$i]=="ip_dst")
+			{
+				$row[] =  long2ip($aRow[ $aColumns[$i] ]);
+			}
 		
 			else if ( $aColumns[$i] != ' ' )
 			{
